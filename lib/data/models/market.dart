@@ -1,31 +1,42 @@
-import 'dart:ffi';
-
 import 'package:equatable/equatable.dart';
 import 'package:pasaryo/utils/uuid.dart';
 
-class Market extends Equatable{
+class Market extends Equatable {
+  final String id;
+  final String name;
+  final String address;
+  final double latitude;
+  final double longitude;
+  final double distance;
+  final String image;
 
-  final String _id;
-  final String _name;
-  final String _address;
-  final Double _latitude;
-  final Double _longitude;
+  Market(String name, String address, double latitude, double longitude,
+      String id, double distance, String image)
+      : this.id = id ?? Uuid().generateV4(),
+        this.name = name,
+        this.address = address,
+        this.latitude = latitude,
+        this.longitude = longitude,
+        this.distance = distance,
+        this.image = image;
 
-  Market (String name, String address, Double latitude, Double longitude, String id) :
-    _id = id ?? Uuid().generateV4(),
-    _name = name,
-    _address = address,
-    _latitude = latitude,
-    _longitude = longitude;
-
-
-  Market copyWith({String name, String address, Double latitude, Double longitude, String id}) =>
-      Market(name, address, latitude, longitude, id);
+  Market copyWith(
+          {String name,
+          String address,
+          double latitude,
+          double longitude,
+          String id,
+          double distance,
+          String image}) =>
+      Market(name, address, latitude, longitude, id, distance, image);
 
   @override
-  List<Object> get props => [_id, _name, _address, _latitude, _longitude];
+  List<Object> get props =>
+      [this.id, this.name, this.address, this.latitude, this.longitude];
 
   @override
   String toString() =>
-      'Market { id: $_id, name: $_name, address: $_address, latitude: $_latitude, longitude: $_longitude }';
+      'Market { id: ${this.id}, name: ${this.name}, address: ${this.address}, '
+      'latitude: ${this.latitude}, longitude: ${this.longitude}, '
+      'distance: ${this.distance}, image: ${this.image}';
 }

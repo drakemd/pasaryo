@@ -14,11 +14,12 @@ description: Enjoy traditional market in your fingertips
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  loading_overlay: ^0.2.1
   equatable: ^1.1.1
   bloc: ^4.0.0
   flutter_bloc: ^4.0.0
@@ -58,6 +59,17 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+        - asset: assets/fonts/Raleway-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Raleway-Thin.ttf
+          weight: 100
+    - family: Average
+      fonts:
+        - asset: assets/fonts/Average-Regular.ttf
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

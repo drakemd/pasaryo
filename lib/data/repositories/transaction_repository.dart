@@ -1,14 +1,16 @@
-import 'dart:math';
+import 'package:pasaryo/data/models/models.dart';
 
-class TransactionScreenRepository {
-  int _data;
+class TransactionRepository {
+  List<Transaction> _transactions;
 
-  Future<void> fetchData() async {
+  Future<List<Transaction>> loadTransactions() async {
     // simulate real data fetching
     await Future.delayed(Duration(milliseconds: 600));
     // store dummy data
-    _data = Random().nextInt(1000);
+    _transactions = [];
+
+    return _transactions;
   }
 
-  int get data => _data;
+  List<Transaction> get transactions => _transactions;
 }

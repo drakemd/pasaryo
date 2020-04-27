@@ -1,15 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:pasaryo/screens/screens.dart';
 import 'package:pasaryo/utils/uuid.dart';
 
 class Transaction extends Equatable{
 
-  final String _id;
-  final String _date;
-  final String _address;
-  final int _quantity;
-  final String _paymentMethod;
-  final String _marketName;
-  final int _totalPayment;
+  final String id;
+  final String date;
+  final String address;
+  final int quantity;
+  final String paymentMethod;
+  final String marketName;
+  final int totalPayment;
+  final String driverName;
+  final String numberPlate;
+  final TransactionStageType stageType;
 
   Transaction (
       String date,
@@ -18,14 +22,21 @@ class Transaction extends Equatable{
       String paymentMethod,
       String marketName,
       int totalPayment,
-      String id) :
-        _id = id ?? Uuid().generateV4(),
-        _date = date,
-        _address = address,
-        _quantity = quantity,
-        _paymentMethod = paymentMethod,
-        _marketName = marketName,
-        _totalPayment = totalPayment;
+      String id,
+      String driverName,
+      String numberPlate,
+      TransactionStageType stageType
+      ) :
+        this.id = id ?? Uuid().generateV4(),
+        this.date = date,
+        this.address = address,
+        this.quantity = quantity,
+        this.paymentMethod = paymentMethod,
+        this.marketName = marketName,
+        this.totalPayment = totalPayment,
+        this.driverName = driverName,
+        this.numberPlate = numberPlate,
+        this.stageType = stageType;
 
 
   Transaction copyWith({
@@ -35,14 +46,19 @@ class Transaction extends Equatable{
     String paymentMethod,
     String marketName,
     int totalPayment,
-    String id}) => Transaction(date, address, quantity, paymentMethod, marketName, totalPayment, id);
+    String id,
+    String driverName,
+    String numberPlate,
+    TransactionStageType stageType}) => Transaction(date, address, quantity, paymentMethod, marketName, totalPayment, id, driverName, numberPlate, stageType);
 
   @override
-  List<Object> get props => [_id, _date, _address, _quantity, _paymentMethod, _marketName, _totalPayment];
+  List<Object> get props => [this.id, this.date, this.address, this.quantity, this.paymentMethod, this.marketName, this.totalPayment, this.driverName, this.numberPlate, this.stageType];
 
   @override
   String toString() =>
-      'Transaction { id: $_id, date: $_date, address: $_address,'
-          ' quantity: $_quantity, paymentMethod: $_paymentMethod,'
-          ' marketName: $_marketName, totalPayment: $_totalPayment }';
+      'Transaction { id: ${this.id}, date: ${this.date}, address: ${this.address},'
+          ' quantity: ${this.quantity}, paymentMethod: ${this.paymentMethod},'
+          ' marketName: ${this.marketName}, totalPayment: ${this.totalPayment},'
+          ' driverName: ${this.driverName}, numberPlate: ${this.numberPlate},'
+          ' stageType: ${this.stageType} }';
 }
