@@ -1,0 +1,1 @@
+enum AppTab { home, transaction, bag, account }
